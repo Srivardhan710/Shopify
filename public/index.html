@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronos Nebula Automatic Watch | Premium Shopify Storefront Simulator</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="View the luxury Chronos Nebula Automatic Watch, featuring titanium casing and a skeleton dial. Estimate shipping and regional pricing instantly.">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Storefront styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="storefront-header">
+    <div class="header-container">
+      <div class="logo">CHRONOS</div>
+      <nav class="navigation">
+        <a href="#" class="nav-link active">Collections</a>
+        <a href="#" class="nav-link">Our Story</a>
+        <a href="#" class="nav-link">Craftsmanship</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <button class="icon-btn" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span class="cart-count">1</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Product Container -->
+  <main class="product-page-container">
+    <div class="product-grid">
+      
+      <!-- Product Gallery -->
+      <div class="product-gallery">
+        <div class="main-image-wrapper">
+          <img src="assets/product.png" alt="Chronos Nebula Automatic Watch" class="product-image" id="main-product-img">
+          <div class="glow-effect"></div>
+        </div>
+        <div class="thumbnail-row">
+          <div class="thumbnail active" data-view="default">
+            <img src="assets/product.png" alt="Main View">
+          </div>
+          <div class="thumbnail" data-view="close-up">
+            <img src="assets/product.png" alt="Dial Close-up" style="transform: scale(1.6); object-position: center;">
+          </div>
+          <div class="thumbnail" data-view="casing">
+            <img src="assets/product.png" alt="Casing Detail" style="transform: rotate(30deg) scale(1.1);">
+          </div>
+          <div class="thumbnail" data-view="perspective">
+            <img src="assets/product.png" alt="Perspective View" style="transform: rotate(-15deg) scale(0.95);">
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Details Info -->
+      <div class="product-details">
+        <div class="tag">NEW ARRIVAL</div>
+        <h1 class="product-title">Chronos Nebula Automatic Watch</h1>
+        <p class="product-sku">SKU: CH-NEB-09S</p>
+        
+        <!-- Main Price Display -->
+        <div class="product-price-section">
+          <div class="price-container">
+            <span class="price-currency">$</span>
+            <span class="price-amount" id="product-display-price">1,550</span>
+          </div>
+          <span class="price-tax-badge" id="product-price-badge">Standard Rate</span>
+        </div>
+        
+        <div class="location-banner" id="location-indicator" style="display: none;">
+          <span class="pulse-dot"></span>
+          <span>Showing price for ZIP: <strong id="location-zip">-</strong> (<span id="location-region">-</span>)</span>
+        </div>
+
+        <p class="product-description">
+          An architectural masterpiece for the wrist. The Nebula Automatic features an ultra-lightweight dark titanium casing, scratch-resistant sapphire crystal dome, and a stunning open-heart skeleton movement displaying brass and gold-finished complications in perpetual motion.
+        </p>
+
+        <!-- Variant Options (Simulated) -->
+        <div class="product-variants">
+          <div class="variant-group">
+            <label class="variant-label">Casing Finish</label>
+            <div class="option-buttons">
+              <button class="option-btn active" id="var-titanium">Titanium Black</button>
+              <button class="option-btn" id="var-gold">Brushed Rose Gold</button>
+            </div>
+          </div>
+          <div class="variant-group">
+            <label class="variant-label">Strap Material</label>
+            <div class="option-buttons">
+              <button class="option-btn active">Hybrid FKM Rubber</button>
+              <button class="option-btn">Saffiano Leather</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RENDER THEME APP EXTENSION BLOCK -->
+        <!-- Below is the exact HTML structure and styling of the liquid block -->
+        <div class="pricing-estimator-card" id="pricing-estimator-container">
+          <div class="estimator-header">
+            <svg class="estimator-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            <h3>Check Regional Pricing</h3>
+          </div>
+          
+          <p class="estimator-description">Enter your ZIP code to calculate the region-specific product price including shipping and local taxes.</p>
+          
+          <div class="estimator-input-group">
+            <div class="input-wrapper">
+              <input 
+                type="text" 
+                id="estimator-zip-input" 
+                placeholder="Enter ZIP Code (e.g. 75028)" 
+                aria-label="ZIP Code" 
+                maxlength="10"
+              />
+              <span class="focus-border"></span>
+            </div>
+            <button id="estimator-check-btn" class="estimator-button">
+              <span class="btn-text">Check Price</span>
+              <span class="btn-spinner" style="display: none;"></span>
+            </button>
+          </div>
+          
+          <div id="estimator-result-panel" class="estimator-result-panel" style="display: none;">
+            <div class="result-details">
+              <div class="result-label" id="estimator-result-label">Estimated Regional Price:</div>
+              <div class="result-value-container">
+                <div class="result-value" id="estimator-result-price">-</div>
+                <div class="result-badge" id="estimator-result-badge">-</div>
+              </div>
+              <div class="result-meta" id="estimator-result-meta">Calculating...</div>
+            </div>
+          </div>
+          
+          <script>
+            (function() {
+              const checkBtn = document.getElementById('estimator-check-btn');
+              const zipInput = document.getElementById('estimator-zip-input');
+              const resultPanel = document.getElementById('estimator-result-panel');
+              const resultPrice = document.getElementById('estimator-result-price');
+              const resultBadge = document.getElementById('estimator-result-badge');
+              const resultMeta = document.getElementById('estimator-result-meta');
+              
+              if (!checkBtn || !zipInput) return;
+
+              checkBtn.addEventListener('click', performPriceCheck);
+              zipInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                  performPriceCheck();
+                }
+              });
+
+              function performPriceCheck() {
+                const zip = zipInput.value.trim();
+                
+                const productId = typeof Shopify !== 'undefined' && Shopify.Analytics ? Shopify.Analytics.meta.product.id : "mock_product_123";
+                const variantId = typeof Shopify !== 'undefined' && Shopify.Analytics ? Shopify.Analytics.meta.selectedVariantId : "mock_variant_456";
+
+                if (!zip) {
+                  showError("Please enter a valid ZIP code.");
+                  return;
+                }
+
+                setLoading(true);
+
+                // Check for simulator environment flag to determine endpoint
+                const isShopifyEnv = typeof Shopify !== 'undefined' && !Shopify.isSimulator;
+                const endpoint = isShopifyEnv ? '/apps/shipping-estimator' : '/api/estimate-shipping';
+
+                fetch(endpoint, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    zip: zip,
+                    productId: productId,
+                    variantId: variantId
+                  })
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response error');
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  setLoading(false);
+                  if (data.success) {
+                    displayResult(data);
+                  } else {
+                    showError(data.error || "Unable to retrieve price. Please try again.");
+                  }
+                })
+                .catch(error => {
+                  setLoading(false);
+                  console.error('Error fetching regional price:', error);
+                  showError("Unable to connect to the pricing backend service.");
+                });
+              }
+
+              function setLoading(isLoading) {
+                const btnText = checkBtn.querySelector('.btn-text');
+                const btnSpinner = checkBtn.querySelector('.btn-spinner');
+
+                if (isLoading) {
+                  checkBtn.disabled = true;
+                  btnText.style.display = 'none';
+                  btnSpinner.style.display = 'inline-block';
+                  zipInput.disabled = true;
+                } else {
+                  checkBtn.disabled = false;
+                  btnText.style.display = 'inline-block';
+                  btnSpinner.style.display = 'none';
+                  zipInput.disabled = false;
+                }
+              }
+
+              function displayResult(data) {
+                resultPanel.style.display = 'block';
+                resultPanel.style.borderColor = data.location === 'Other Locations' ? '#6b7280' : '#3b82f6';
+                
+                resultPrice.innerText = data.price;
+                
+                resultBadge.innerText = data.location === 'Other Locations' ? 'Standard' : 'Special Rate';
+                resultBadge.className = 'result-badge ' + (data.location === 'Other Locations' ? 'badge-default' : 'badge-success');
+                
+                resultMeta.innerText = `${data.message} (${data.location})`;
+
+                const priceUpdateEvent = new CustomEvent('shopifyPriceEstimatorUpdate', {
+                  detail: {
+                    price: data.price,
+                    zip: data.zip,
+                    location: data.location
+                  }
+                });
+                document.dispatchEvent(priceUpdateEvent);
+              }
+
+              function showError(message) {
+                resultPanel.style.display = 'block';
+                resultPanel.style.borderColor = '#ef4444';
+                
+                resultPrice.innerText = 'Error';
+                resultBadge.innerText = 'Failed';
+                resultBadge.className = 'result-badge';
+                resultBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+                resultBadge.style.color = '#ef4444';
+                resultBadge.style.border = '1px solid rgba(239, 68, 68, 0.2)';
+                
+                resultMeta.innerText = message;
+              }
+            })();
+          </script>
+        </div>
+        <!-- END THEME APP EXTENSION BLOCK -->
+
+        <!-- Buy Buttons -->
+        <div class="purchase-actions">
+          <button class="add-to-cart-btn" id="add-to-cart-btn">Add to Cart</button>
+          <button class="buy-now-btn">Buy It Now</button>
+        </div>
+
+        <div class="store-features">
+          <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>2-Year Global Warranty</span>
+          </div>
+          <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Complimentary Insured Shipping</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer class="storefront-footer">
+    <p>&copy; 2026 Chronos Horology. Simulated Shopify Product Page.</p>
+  </footer>
+
+  <!-- ==========================================================================
+       Simulator Interactive Overlays & Modals
+       ========================================================================== -->
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-overlay-backdrop" id="search-close-backdrop"></div>
+    <div class="search-panel">
+      <div class="search-header">
+        <h2>Search Chronos</h2>
+        <button class="close-btn" id="search-close-btn" aria-label="Close search">&times;</button>
+      </div>
+      <div class="search-input-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="search-input" placeholder="Search for luxury watch models (e.g. Helios)..." autocomplete="off">
+      </div>
+      <div class="search-results-panel" id="search-results-panel">
+        <p class="search-empty">Start typing to search our collections...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-container" id="cart-drawer-container">
+    <div class="cart-drawer-backdrop" id="cart-close-backdrop"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-drawer-header">
+        <h2>Your Cart</h2>
+        <button class="close-btn" id="cart-close-btn" aria-label="Close cart">&times;</button>
+      </div>
+      <div class="cart-drawer-body" id="cart-drawer-body">
+        <p class="cart-empty-message">Your cart is currently empty.</p>
+      </div>
+      <div class="cart-drawer-footer" id="cart-drawer-footer" style="display: none;">
+        <div class="cart-totals">
+          <div class="cart-total-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$1,550</span>
+          </div>
+          <div class="cart-total-row regional-pricing" style="display: none;" id="cart-regional-row">
+            <span>Regional Pricing Active</span>
+            <span id="cart-regional-badge">Special Rate</span>
+          </div>
+          <div class="cart-total-row note">
+            <span>Regional taxes and shipping are calculated based on checked ZIP.</span>
+          </div>
+        </div>
+        <div class="cart-actions">
+          <button class="checkout-btn" id="cart-checkout-btn">Proceed to Checkout</button>
+          <button class="clear-cart-btn" id="cart-clear-btn">Clear Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-modal-container" id="checkout-modal-container">
+    <div class="checkout-modal-backdrop" id="checkout-close-backdrop"></div>
+    <div class="checkout-modal">
+      <button class="close-btn" id="checkout-close-btn" aria-label="Close checkout">&times;</button>
+      
+      <!-- Step 1: Form & Summary -->
+      <div class="checkout-content" id="checkout-content-step1">
+        <h2>Secure Checkout</h2>
+        <p class="checkout-subtitle">Verify your order details and complete payment.</p>
+        
+        <div class="order-summary-box">
+          <h3>Order Summary</h3>
+          <div class="summary-item">
+            <span id="summary-product-title">Chronos Nebula Automatic Watch</span>
+            <span id="summary-product-price">$1,550</span>
+          </div>
+          <div class="summary-details">
+            <span id="summary-variants">Casing: Titanium Black | Strap: Hybrid FKM Rubber</span>
+          </div>
+          <div class="summary-item shipping-row">
+            <span>Destination ZIP</span>
+            <span id="summary-zip">-</span>
+          </div>
+          <div class="summary-item shipping-row">
+            <span>Regional Delivery</span>
+            <span id="summary-delivery-type">Standard Insured</span>
+          </div>
+          <hr class="summary-divider">
+          <div class="summary-item total-row">
+            <span>Order Total</span>
+            <span id="summary-total-price">$1,550</span>
+          </div>
+        </div>
+
+        <form id="checkout-form" class="checkout-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bill-name">Full Name</label>
+              <input type="text" id="bill-name" required placeholder="John Doe">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bill-email">Email Address</label>
+              <input type="email" id="bill-email" required placeholder="john@example.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card-num">Card Number</label>
+              <input type="text" id="card-num" required placeholder="4111 2222 3333 4444" maxlength="19">
+            </div>
+          </div>
+          <div class="form-row split">
+            <div class="form-group">
+              <label for="card-expiry">Expiry Date</label>
+              <input type="text" id="card-expiry" required placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label for="card-cvc">CVC</label>
+              <input type="password" id="card-cvc" required placeholder="123" maxlength="4">
+            </div>
+          </div>
+          <button type="submit" class="pay-btn" id="pay-submit-btn">Pay Securely</button>
+        </form>
+      </div>
+
+      <!-- Step 2: Processing -->
+      <div class="checkout-content" id="checkout-content-processing" style="display: none;">
+        <div class="spinner-container">
+          <div class="checkout-large-spinner"></div>
+        </div>
+        <h2 id="processing-status-title">Processing Order</h2>
+        <p id="processing-status-desc" class="processing-desc">Contacting secure regional banking host...</p>
+        <div class="progress-bar-wrapper">
+          <div class="progress-bar-fill" id="checkout-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Step 3: Success Receipt -->
+      <div class="checkout-content success-step" id="checkout-content-success" style="display: none;">
+        <div class="success-icon-wrapper">
+          <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <circle class="success-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
+        <h2>Payment Successful!</h2>
+        <p class="success-desc">Thank you for your purchase. Your order has been dispatched.</p>
+        <div class="receipt-box">
+          <p><strong>Order ID:</strong> <span id="receipt-order-id">#CH-73921</span></p>
+          <p><strong>Item:</strong> <span id="receipt-product">Chronos Nebula Automatic Watch</span></p>
+          <p><strong>Total Paid:</strong> <span id="receipt-total">$1,499</span></p>
+          <p><strong>Delivery ZIP:</strong> <span id="receipt-zip">75028</span></p>
+          <p><strong>Shipping Region:</strong> <span id="receipt-region">Flower Mound, TX (Southern Region)</span></p>
+        </div>
+        <button class="receipt-close-btn" id="receipt-done-btn">Back to Shop</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Info Modal -->
+  <div class="info-modal-container" id="info-modal-container">
+    <div class="info-modal-backdrop" id="info-close-backdrop"></div>
+    <div class="info-modal" id="info-modal">
+      <button class="close-btn" id="info-close-btn" aria-label="Close modal">&times;</button>
+      <div class="info-modal-content" id="info-modal-content">
+        <!-- Filled dynamically based on link click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Frontend Logic scripts -->
+  <script src="client.js"></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!-- Shopify Theme App Extension: Regional Pricing Estimator Block -->
+
+<div class="pricing-estimator-card" id="pricing-estimator-container">
+  <div class="estimator-header">
+    <svg class="estimator-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="3" width="15" height="13"></rect>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+    </svg>
+    <h3>Check Regional Pricing</h3>
+  </div>
+  
+  <p class="estimator-description">Enter your ZIP code to calculate the region-specific product price including shipping and local taxes.</p>
+  
+  <div class="estimator-input-group">
+    <div class="input-wrapper">
+      <input 
+        type="text" 
+        id="estimator-zip-input" 
+        placeholder="Enter ZIP Code (e.g. 75028)" 
+        aria-label="ZIP Code" 
+        maxlength="10"
+      />
+      <span class="focus-border"></span>
+    </div>
+    <button id="estimator-check-btn" class="estimator-button">
+      <span class="btn-text">Check Price</span>
+      <span class="btn-spinner" style="display: none;"></span>
+    </button>
+  </div>
+  
+  <div id="estimator-result-panel" class="estimator-result-panel" style="display: none;">
+    <div class="result-details">
+      <div class="result-label" id="estimator-result-label">Estimated Regional Price:</div>
+      <div class="result-value-container">
+        <div class="result-value" id="estimator-result-price">-</div>
+        <div class="result-badge" id="estimator-result-badge">-</div>
+      </div>
+      <div class="result-meta" id="estimator-result-meta">Calculating...</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pricing-estimator-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .pricing-estimator-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .estimator-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .estimator-icon {
+    width: 24px;
+    height: 24px;
+    color: #3b82f6; /* Modern neon blue */
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+  }
+
+  .estimator-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+  }
+
+  .estimator-description {
+    margin: 0 0 16px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .estimator-input-group {
+    display: flex;
+    gap: 12px;
+    position: relative;
+  }
+
+  .input-wrapper {
+    position: relative;
+    flex-grow: 1;
+  }
+
+  #estimator-zip-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.25s ease;
+    outline: none;
+  }
+
+  #estimator-zip-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  #estimator-zip-input:focus {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+
+  .estimator-button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  }
+
+  .estimator-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+    filter: brightness(1.1);
+  }
+
+  .estimator-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+  }
+
+  /* Button Spinner */
+  .btn-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: est-spin 0.8s linear infinite;
+  }
+
+  @keyframes est-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Result Panel */
+  .estimator-result-panel {
+    margin-top: 18px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 4px solid #3b82f6;
+    border-radius: 4px 12px 12px 4px;
+    animation: est-slide-down 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes est-slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .result-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+  }
+
+  .result-value-container {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .result-value {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .result-badge {
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  /* Success/Active Badge */
+  .badge-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  /* Default/Fallback Badge */
+  .badge-default {
+    background: rgba(107, 114, 128, 0.15);
+    color: #9ca3af;
+    border: 1px solid rgba(107, 114, 128, 0.2);
+  }
+
+  .result-meta {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Responsive styling */
+  @media (max-width: 480px) {
+    .estimator-input-group {
+      flex-direction: column;
+    }
+    .estimator-button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const checkBtn = document.getElementById('estimator-check-btn');
+    const zipInput = document.getElementById('estimator-zip-input');
+    const resultPanel = document.getElementById('estimator-result-panel');
+    const resultPrice = document.getElementById('estimator-result-price');
+    const resultBadge = document.getElementById('estimator-result-badge');
+    const resultMeta = document.getElementById('estimator-result-meta');
+    
+    if (!checkBtn || !zipInput) return;
+
+    checkBtn.addEventListener('click', performPriceCheck);
+    zipInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performPriceCheck();
+      }
+    });
+
+    function performPriceCheck() {
+      const zip = zipInput.value.trim();
+      
+      // Grab Shopify context if available, otherwise mock
+      const productId = typeof Shopify !== 'undefined' && Shopify.Analytics ? Shopify.Analytics.meta.product.id : "mock_product_123";
+      const variantId = typeof Shopify !== 'undefined' && Shopify.Analytics ? Shopify.Analytics.meta.selectedVariantId : "mock_variant_456";
+
+      if (!zip) {
+        showError("Please enter a valid ZIP code.");
+        return;
+      }
+
+      setLoading(true);
+
+      // Determine endpoint: Shopify App Proxy handles requests via /apps/shipping-estimator in Shopify storefront.
+      // Falls back to local relative API endpoint in the simulator.
+      const isShopifyEnv = typeof Shopify !== 'undefined' && !Shopify.isSimulator;
+      const endpoint = isShopifyEnv ? '/apps/shipping-estimator' : '/api/estimate-shipping';
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          zip: zip,
+          productId: productId,
+          variantId: variantId
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response error');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setLoading(false);
+        if (data.success) {
+          displayResult(data);
+        } else {
+          showError(data.error || "Unable to retrieve price. Please try again.");
+        }
+      })
+      .catch(error => {
+        setLoading(false);
+        console.error('Error fetching regional price:', error);
+        showError("Unable to connect to the pricing backend service.");
+      });
+    }
+
+    function setLoading(isLoading) {
+      const btnText = checkBtn.querySelector('.btn-text');
+      const btnSpinner = checkBtn.querySelector('.btn-spinner');
+
+      if (isLoading) {
+        checkBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnSpinner.style.display = 'inline-block';
+        zipInput.disabled = true;
+      } else {
+        checkBtn.disabled = false;
+        btnText.style.display = 'inline-block';
+        btnSpinner.style.display = 'none';
+        zipInput.disabled = false;
+      }
+    }
+
+    function displayResult(data) {
+      resultPanel.style.display = 'block';
+      resultPanel.style.borderColor = data.location === 'Other Locations' ? '#6b7280' : '#3b82f6';
+      
+      // Update price text
+      resultPrice.innerText = data.price;
+      
+      // Update badge type
+      resultBadge.innerText = data.location === 'Other Locations' ? 'Standard' : 'Special Rate';
+      resultBadge.className = 'result-badge ' + (data.location === 'Other Locations' ? 'badge-default' : 'badge-success');
+      
+      // Update metadata description
+      resultMeta.innerText = `${data.message} (${data.location})`;
+
+      // Dynamic custom event to notify simulator product price component
+      const priceUpdateEvent = new CustomEvent('shopifyPriceEstimatorUpdate', {
+        detail: {
+          price: data.price,
+          zip: data.zip,
+          location: data.location
+        }
+      });
+      document.dispatchEvent(priceUpdateEvent);
+    }
+
+    function showError(message) {
+      resultPanel.style.display = 'block';
+      resultPanel.style.borderColor = '#ef4444'; // Red error border
+      
+      resultPrice.innerText = 'Error';
+      resultBadge.innerText = 'Failed';
+      resultBadge.className = 'result-badge';
+      resultBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+      resultBadge.style.color = '#ef4444';
+      resultBadge.style.border = '1px solid rgba(239, 68, 68, 0.2)';
+      
+      resultMeta.innerText = message;
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Shipping Price Estimator",
+  "target": "section",
+  "templates": ["product"],
+  "settings": []
+}
+{% endschema %}

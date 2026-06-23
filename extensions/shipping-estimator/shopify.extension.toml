@@ -1,0 +1,12 @@
+# Shopify Theme App Extension Configuration
+# This specifies that this is a storefront theme extension
+
+api_version = "2026-04"
+
+[[extensions]]
+name = "Regional Pricing Estimator Block"
+handle = "regional-pricing-estimator-block"
+type = "theme"
+
+[[extensions.targeting]]
+target = "theme-app-extension"
