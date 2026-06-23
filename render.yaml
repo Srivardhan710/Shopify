@@ -1,0 +1,10 @@
+# Render Blueprint Specification for easy one-click cloud hosting
+services:
+  - type: web
+    name: shopify-pricing-estimator-backend
+    runtime: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: PORT
+        value: 3000
