@@ -122,18 +122,23 @@ Enter the following ZIP codes in the estimator widget to test the rules engine:
 
 ---
 
-## 📦 Production Deployment to Shopify Store
+## 📦 Active Production Deployment
 
-To import this app and block to your real Shopify Developer store:
+The application is deployed and configured under your Shopify Partner Account:
 
-1. Create a Shopify Partner account and create an app.
-2. Link the app locally by copying client details into `shopify.app.toml`.
-3. Expose the server using a tunnel:
-   ```bash
-   npx shopify app dev
-   ```
-4. Deploy the app block:
-   ```bash
-   npx shopify app deploy
-   ```
-5. Install the app on your store and customize your product page theme, dragging the "Regional Pricing Estimator" block next to your price element.
+- **Shopify Development Store Frontpage**: [https://regional-pricing-estimator.myshopify.com](https://regional-pricing-estimator.myshopify.com)
+- **Shopify Store Admin**: [https://admin.shopify.com/store/regional-pricing-estimator](https://admin.shopify.com/store/regional-pricing-estimator)
+- **Shopify Partner App Page**: [https://partners.shopify.com/223764241/apps/388564320257](https://partners.shopify.com/223764241/apps/388564320257)
+- **Deployed App Version (v3)**: [Regional Pricing Estimator Version 3](https://dev.shopify.com/dashboard/223764241/apps/388564320257/versions/1026323283969)
+- **Local Storefront Simulator**: [http://localhost:3000/](http://localhost:3000/)
+
+---
+
+## 🛠️ How to View and Edit the Theme Extension
+1. Open the [Shopify Theme Customizer](https://admin.shopify.com/store/regional-pricing-estimator/themes).
+2. Click **Customize** on your active theme.
+3. In the top page selector, navigate to **Products** -> **Default product**.
+4. In the left panel, click the arrow next to **Product information** to expand the blocks.
+5. Click **Add block**, switch to the **Apps** tab, and select **Regional Pricing Estimator Block**.
+6. Place the block on the page and click **Save** in the top-right corner.
+
