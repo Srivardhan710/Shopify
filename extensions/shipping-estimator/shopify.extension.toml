@@ -6,6 +6,7 @@ api_version = "2026-04"
 [[extensions]]
 name = "Regional Pricing Estimator Block"
 handle = "regional-pricing-estimator-block"
+uid = "57c231f7-11e3-292d-0b03-acf3c0705666b3eb363b"
 type = "theme"
 
 [[extensions.targeting]]

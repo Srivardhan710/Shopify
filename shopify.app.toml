@@ -7,24 +7,21 @@ handle = "regional-pricing-estimator"
 application_url = "http://localhost:3000"
 embedded = true
 
-[webhooks]
-api_version = "2026-04"
-
-[[webhooks.subscriptions]]
-topics = [ "app/uninstalled" ]
-uri = "/api/webhooks"
-
+# Auth redirect URLs
 [auth]
 redirect_urls = [
   "http://localhost:3000/api/auth/callback"
 ]
 
-[scopes]
+[webhooks]
+api_version = "2026-04"
+
+[access_scopes]
 # Only needs standard storefront & products read permissions
 scopes = "read_products"
 
 # App Proxy configuration to route storefront requests through Shopify securely
 [app_proxy]
-url = "http://localhost:3000/api/estimate-shipping"
+url = "https://example.com/api/estimate-shipping"
 subpath = "shipping-estimator"
 prefix = "apps"
