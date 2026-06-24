@@ -6,7 +6,7 @@ A fully working regional pricing and shipping price estimator app built for Shop
 
 ## 🏗️ Architecture Design & API Integration
 
-The application bridges the Shopify Storefront and our custom Node.js Express backend using **Shopify App Proxies**. Below is the architectural flow showing how the storefront calls the backend API securely and without CORS issues.
+The application bridges the Shopify Storefront and our custom Node.js Express backend using **Shopify App Proxies**. Below is the architectural flow showing how the storefront calls the backend API securely, without CORS issues, and with cryptographic verification.
 
 ```
 +-----------------------------------------------------------------------------------+
@@ -16,24 +16,24 @@ The application bridges the Shopify Storefront and our custom Node.js Express ba
 |  (Renders product liquid)         (shipping_estimator.liquid)       "Check Price" |
 +-----------------------------------------------------------------------------------+
                                              |
-                                             | sends POST request to
-                                             | "/apps/shipping-estimator" (Relative URL)
+                                             | sends GET request to
+                                             | "/apps/shipping-estimator?zip=...&productId=..."
                                              v
 +-----------------------------------------------------------------------------------+
 |                              2. SHOPIFY PLATFORM                                  |
 |                                                                                   |
 |  * Intercepts the request at "/apps/shipping-estimator"                           |
-|  * Appends cryptographic signature headers (HMAC verification)                    |
-|  * Proxies payload to configured backend: http://localhost:3000/api/estimate-shipping|
+|  * Appends Shopify signature parameters (HMAC verification parameters)            |
+|  * Proxies full query string to configured backend API                            |
 +-----------------------------------------------------------------------------------+
                                              |
-                                             | forwards payload
+                                             | forwards GET request with query params
                                              v
 +-----------------------------------------------------------------------------------+
 |                              3. APP BACKEND SERVER                                |
 |                                                                                   |
 |  [ Express.js Server (server.js) ]                                                |
-|  * Validates HMAC signature header (production-ready)                             |
+|  * Validates HMAC signature against app secret key (production-ready)             |
 |  * Checks ZIP code against Rules Engine (e.g. 75028 -> $1,499)                    |
 |  * Returns JSON payload: { success: true, price: "$1,499", location: "..." }      |
 +-----------------------------------------------------------------------------------+
@@ -49,16 +49,19 @@ The application bridges the Shopify Storefront and our custom Node.js Express ba
 +-----------------------------------------------------------------------------------+
 ```
 
-### Key Integration Mechanics
+### Key Integration Mechanics & Security
 
 1. **Secure CORS-Free Calling (App Proxy)**: 
    Standard browsers block direct API calls from a Shopify merchant storefront (e.g., `shop.myshopify.com`) to an external app backend server (e.g., `api.myapp.com`) due to CORS. To resolve this, the extension script fetches from a relative subpath: `/apps/shipping-estimator`. Shopify handles the proxying internally, eliminating CORS configurations and keeping the backend URL hidden.
-2. **Liquid Shopify Context**: 
+2. **Cryptographic Validation (HMAC Verification)**:
+   By using `GET` requests, all user parameters (`zip`, `productId`, `variantId`) are passed in the URL query string. When Shopify proxies the request, it appends default parameters (e.g. `shop`, `path_prefix`, `timestamp`, `signature`) and signs the entire sorted query string using the app's Shared Secret. The backend server verifies this signature using a constant-time comparison to ensure the request genuinely came via Shopify and that none of the query parameters have been modified or tampered with.
+3. **Liquid Shopify Context**: 
    The theme extension utilizes Liquid template variables to automatically capture product properties:
    * `{{ product.id }}`: Unique product ID.
    * `{{ product.selected_or_first_available_variant.id }}`: Active variant ID.
-3. **Local Simulator Bypass**: 
-   To support running the code locally without registering an active Shopify Partner account or tunnels, the frontend sets a `Shopify.isSimulator = true` flag. The script detects this flag and calls our relative Express route `/api/estimate-shipping` directly.
+4. **Local Simulator Bypass**: 
+   To support running the code locally without registering an active Shopify Partner account or tunnels, the frontend sets a `Shopify.isSimulator = true` flag. The script detects this flag and calls our relative Express route `/api/estimate-shipping` directly. If the backend does not have `SHOPIFY_API_SECRET` or `SHOPIFY_APP_SECRET` defined in the environment, it bypasses signature verification for easy testing.
+
 
 ---
 

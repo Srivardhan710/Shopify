@@ -296,16 +296,19 @@
       const isShopifyEnv = typeof Shopify !== 'undefined' && !Shopify.isSimulator;
       const endpoint = isShopifyEnv ? '/apps/shipping-estimator' : '/api/estimate-shipping';
 
-      fetch(endpoint, {
-        method: 'POST',
+      // Build query parameters for secure GET request (Shopify App Proxy signature verifies query parameters)
+      const params = new URLSearchParams({
+        zip: zip,
+        productId: productId,
+        variantId: variantId
+      });
+      const url = `${endpoint}?${params.toString()}`;
+
+      fetch(url, {
+        method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          zip: zip,
-          productId: productId,
-          variantId: variantId
-        })
+          'Accept': 'application/json'
+        }
       })
       .then(response => {
         if (!response.ok) {
